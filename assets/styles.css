@@ -424,3 +424,86 @@
     .page-header { padding: 8rem 0 3rem; }
     .article-hero { height:48vh; }
   }
+
+  /* ============ SUNDANCE PAGE ============ */
+  .sd-light { background: var(--bone); padding: 6.5rem 0; }
+  .sd-light:nth-of-type(even) { background: #f0ebde; }
+  .sd-dark { background: var(--night-1); padding: 6.5rem 0; position: relative; overflow: hidden; }
+  .sd-dark.glow { background-image: radial-gradient(110% 70% at 50% 120%, rgba(200,99,42,0.15) 0%, transparent 55%); }
+  .sd-dark .section-label { color: rgba(236,208,137,0.8); }
+  .sd-dark .section-label::before { background: rgba(236,208,137,0.8); }
+  .sd-dark .section-heading { color: var(--bone); }
+  .sd-dark .section-heading em { font-style: italic; color: var(--gold-soft); }
+  .sd-light .section-heading { color: var(--ink); }
+  .sd-light .section-heading em { font-style: italic; color: var(--indigo); }
+  .sd-heading { font-size: clamp(2rem, 3.4vw, 2.9rem); margin-bottom: 1.4rem; }
+  .sd-body { font-weight: 300; line-height: 1.95; font-size: 1.02rem; max-width: 64ch; }
+  .sd-light .sd-body { color: var(--ink-soft); }
+  .sd-dark .sd-body { color: rgba(245,239,226,0.64); }
+  .sd-body + .sd-body { margin-top: 1.1rem; }
+
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(248px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .info-card { padding: 1.9rem 1.8rem; border-radius: 5px; border-top: 2px solid var(--gold); }
+  .sd-light .info-card { background: #fff; box-shadow: 0 16px 38px -28px rgba(11,18,40,0.42); }
+  .sd-dark .info-card { background: rgba(255,255,255,0.04); border: 1px solid var(--line-dark); border-top: 2px solid var(--gold); }
+  .info-card h3 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 1.28rem; margin-bottom: 0.9rem; }
+  .sd-light .info-card h3 { color: var(--ink); }
+  .sd-dark .info-card h3 { color: var(--gold-soft); }
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+  .checklist li { position: relative; padding-left: 1.5rem; font-size: 0.92rem; font-weight: 300; line-height: 1.65; }
+  .sd-light .checklist li { color: var(--ink-soft); }
+  .sd-dark .checklist li { color: rgba(245,239,226,0.62); }
+  .checklist li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+  .day-list { margin-top: 3rem; }
+  .day-row { display: grid; grid-template-columns: 5rem 1fr; gap: 2rem; padding: 2rem 0; align-items: start; }
+  .sd-light .day-row { border-top: 1px solid var(--line-light); }
+  .sd-dark .day-row { border-top: 1px solid var(--line-dark); }
+  .day-num { font-family: 'Fraunces', serif; font-weight: 300; font-size: 1.05rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); padding-top: 0.3rem; }
+  .day-row h3 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 1.4rem; margin-bottom: 0.6rem; }
+  .sd-light .day-row h3 { color: var(--ink); }
+  .sd-dark .day-row h3 { color: var(--gold-soft); }
+  .day-row p { font-size: 0.95rem; font-weight: 300; line-height: 1.8; }
+  .sd-light .day-row p { color: var(--ink-soft); }
+  .sd-dark .day-row p { color: rgba(245,239,226,0.6); }
+
+  .app-card { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line-dark); border-radius: 8px; padding: 2.6rem; margin-top: 2.5rem; }
+  .app-icon { width: 88px; height: 88px; border-radius: 20px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(150deg, var(--indigo), var(--night-0)); box-shadow: 0 0 0 1px rgba(236,208,137,0.3), 0 14px 30px -14px rgba(0,0,0,0.6); }
+  .app-text { flex: 1; min-width: 260px; }
+  .app-text h3 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 1.55rem; color: var(--gold-soft); margin-bottom: 0.6rem; }
+  .app-text p { font-size: 0.96rem; font-weight: 300; color: rgba(245,239,226,0.62); line-height: 1.8; margin-bottom: 1.3rem; max-width: 54ch; }
+
+  .sd-callout { margin-top: 2.5rem; padding: 1.6rem 2rem; border-left: 3px solid var(--gold); background: rgba(216,167,62,0.07); border-radius: 0 4px 4px 0; }
+  .sd-dark .sd-callout { background: rgba(216,167,62,0.08); }
+  .sd-callout p { font-family: 'Fraunces', serif; font-style: italic; font-size: 1.25rem; line-height: 1.5; margin: 0; }
+  .sd-light .sd-callout p { color: var(--ink); }
+  .sd-dark .sd-callout p { color: var(--gold-pale); }
+
+  @media (max-width: 860px) {
+    .sd-light, .sd-dark { padding: 4.5rem 0; }
+    .day-row { grid-template-columns: 1fr; gap: 0.4rem; }
+  }
+
+  /* ============ HISTORY — HONORED LEADERS ============ */
+  .leaders { margin-top: 6rem; }
+  .leaders-head { text-align: center; margin-bottom: 3.5rem; }
+  #history .leaders .section-label { justify-content: center; color: rgba(236,208,137,0.8); }
+  #history .leaders .section-label::before { background: rgba(236,208,137,0.8); }
+  #history .leaders .section-heading { color: var(--bone); font-size: clamp(2rem,3.4vw,2.9rem); }
+  #history .leaders .section-heading em { font-style: italic; color: var(--gold-soft); }
+  .leader-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(248px,1fr)); gap: 1.5rem; }
+  .leader-card { position: relative; overflow: hidden; background: rgba(255,255,255,0.035); border: 1px solid var(--line-dark);
+    border-radius: 6px; padding: 2rem 1.9rem; transition: transform .4s cubic-bezier(.2,.7,.3,1), background .4s, border-color .4s; }
+  .leader-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(var(--gold), transparent); }
+  .leader-card:hover { transform: translateY(-5px); background: rgba(26,39,77,0.5); border-color: rgba(216,167,62,0.35); }
+  .leader-name { font-family: 'Fraunces', serif; font-weight: 400; font-size: 1.5rem; color: var(--gold-soft); line-height: 1.08; }
+  .leader-lakota { font-family: 'Fraunces', serif; font-style: italic; font-size: 0.98rem; color: rgba(236,208,137,0.62); margin-top: 0.25rem; min-height: 1.2em; }
+  .leader-meta { font-size: 0.64rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sage); margin: 0.9rem 0; }
+  .leader-legacy { font-size: 0.9rem; font-weight: 300; color: rgba(245,239,226,0.62); line-height: 1.75; }
+  @media (max-width:1000px){ .leaders { margin-top: 4rem; } }
+
+  /* Wakinyan Woonspe app icon (uses the app's thunderbird logo) */
+  .app-icon-img { width: 112px; height: auto; flex-shrink: 0; filter: drop-shadow(0 10px 22px rgba(0,0,0,0.55)); }
+  @media (max-width:860px){ .app-icon-img { width: 86px; } }
