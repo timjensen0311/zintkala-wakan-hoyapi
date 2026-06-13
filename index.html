@@ -4,212 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zintkala Wakan Hoyapi — Voice of The Sacred Bird</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --sky-deep: #0d2340;
-    --sky-mid: #1a3d6b;
-    --sky-light: #2c5f9e;
-    --gold-bright: #d4a843;
-    --gold-soft: #e8c97a;
-    --gold-pale: #f5e8c0;
-    --earth-dark: #2a1f0f;
-    --earth-mid: #5c3d1e;
-    --sage: #4a6741;
-    --sage-light: #7a9e70;
-    --cream: #f8f3e8;
-    --text-dark: #1a1208;
-    --text-mid: #3d2e12;
-    --text-muted: #7a6a4a;
-  }
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 1.2rem 3rem;
-    display: flex; align-items: center; justify-content: space-between;
-    background: rgba(13,35,64,0.93); backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(212,168,67,0.2);
-  }
-  .nav-wordmark { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 400; color: var(--gold-soft); letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.3; }
-  .nav-wordmark span { display: block; font-style: italic; font-size: 0.75rem; color: rgba(232,201,122,0.6); letter-spacing: 0.12em; text-transform: none; margin-top: 1px; }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a { font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(248,243,232,0.7); text-decoration: none; transition: color 0.3s; }
-  .nav-links a:hover { color: var(--gold-soft); }
-  .nav-donate { font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--earth-dark); background: var(--gold-bright); padding: 0.55rem 1.4rem; border-radius: 2px; text-decoration: none; transition: background 0.3s; }
-  .nav-donate:hover { background: var(--gold-soft); }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
-    position: relative; text-align: center; padding: 8rem 2rem 5rem;
-    background: linear-gradient(170deg, #050f1f 0%, #0d2340 35%, #1a3d6b 65%, #0f2a3f 100%);
-    overflow: hidden;
-  }
-  .stars { position: absolute; inset: 0; pointer-events: none; }
-  .star { position: absolute; background: white; border-radius: 50%; animation: twinkle var(--d,3s) ease-in-out infinite var(--delay,0s); }
-  @keyframes twinkle { 0%,100%{opacity:var(--min,0.2)} 50%{opacity:var(--max,0.9)} }
-  .hero::after { content:''; position:absolute; bottom:0;left:0;right:0; height:35%; background:linear-gradient(to top,rgba(44,95,158,0.12) 0%,transparent 100%); pointer-events:none; }
-
-  .bird-symbol { position:relative; margin-bottom:2.5rem; animation:float 6s ease-in-out infinite; z-index:1; }
-  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
-  .symbol-ring { position:absolute; top:50%;left:50%; transform:translate(-50%,-50%); width:140px;height:140px; border:1px solid rgba(212,168,67,0.22); border-radius:50%; animation:ring-pulse 4s ease-in-out infinite; }
-  .symbol-ring-2 { width:175px;height:175px; border-color:rgba(212,168,67,0.1); }
-  @keyframes ring-pulse { 0%,100%{opacity:0.6;transform:translate(-50%,-50%) scale(1)} 50%{opacity:1;transform:translate(-50%,-50%) scale(1.03)} }
-
-  .hero-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,6vw,5rem); font-weight:300; color:var(--cream); letter-spacing:0.04em; line-height:1.1; margin-bottom:0.6rem; position:relative; z-index:1; }
-  .hero-title em { font-style:italic; color:var(--gold-soft); display:block; }
-  .hero-subtitle { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(1rem,2vw,1.25rem); color:rgba(232,201,122,0.65); letter-spacing:0.12em; margin-bottom:2rem; position:relative; z-index:1; }
-  .hero-divider { width:80px; height:1px; background:linear-gradient(to right,transparent,var(--gold-bright),transparent); margin:0 auto 2rem; }
-  .hero-intro { font-size:0.95rem; font-weight:300; color:rgba(248,243,232,0.65); max-width:560px; line-height:1.9; letter-spacing:0.03em; position:relative; z-index:1; }
-  .hero-cta-group { display:flex; gap:1rem; justify-content:center; margin-top:2.5rem; position:relative; z-index:1; }
-  .btn-primary { font-family:'Jost',sans-serif; font-size:0.78rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--earth-dark); background:var(--gold-bright); padding:0.85rem 2.2rem; border-radius:2px; text-decoration:none; transition:all 0.3s; display:inline-block; }
-  .btn-primary:hover { background:var(--gold-soft); transform:translateY(-2px); }
-  .btn-outline { font-family:'Jost',sans-serif; font-size:0.78rem; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; color:rgba(248,243,232,0.8); background:transparent; padding:0.85rem 2.2rem; border-radius:2px; text-decoration:none; border:1px solid rgba(248,243,232,0.3); transition:all 0.3s; }
-  .btn-outline:hover { border-color:var(--gold-soft); color:var(--gold-soft); transform:translateY(-2px); }
-
-  .scroll-hint { position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:6px; animation:fade-bob 2.5s ease-in-out infinite; }
-  @keyframes fade-bob { 0%,100%{opacity:0.4;transform:translateX(-50%) translateY(0)} 50%{opacity:0.8;transform:translateX(-50%) translateY(6px)} }
-  .scroll-hint span { font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(212,168,67,0.5); }
-  .scroll-line { width:1px; height:40px; background:linear-gradient(to bottom,rgba(212,168,67,0.6),transparent); }
-
-  /* SECTIONS */
-  section { position:relative; }
-  .section-inner { max-width:1100px; margin:0 auto; padding:0 3rem; }
-  .section-label { font-size:0.68rem; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:1rem; display:flex; align-items:center; gap:12px; }
-  .section-label::before { content:''; display:block; width:28px; height:1px; background:var(--gold-bright); flex-shrink:0; }
-  .section-heading { font-family:'Cormorant Garamond',serif; font-weight:300; line-height:1.15; }
-
-  /* MISSION */
-  #mission { background:var(--cream); padding:8rem 0; }
-  .mission-layout { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
-  .mission-text .section-heading { font-size:clamp(2.2rem,3.5vw,3.2rem); color:var(--text-dark); margin-bottom:2rem; }
-  .mission-text .section-heading em { font-style:italic; color:var(--sky-mid); }
-  .mission-text p { font-size:0.95rem; font-weight:300; line-height:1.95; color:var(--text-mid); margin-bottom:1.2rem; }
-
-  /* VALUES */
-  #values { background:var(--sky-deep); padding:7rem 0; overflow:hidden; }
-  #values::before { content:''; position:absolute; top:0;left:0;right:0; height:4px; background:linear-gradient(to right,transparent,var(--gold-bright),transparent); }
-  #values .section-label { color:rgba(212,168,67,0.7); }
-  #values .section-label::before { background:rgba(212,168,67,0.7); }
-  .values-heading { font-size:clamp(2rem,3vw,2.8rem); color:var(--cream); margin-bottom:4rem; max-width:500px; }
-  .values-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(212,168,67,0.12); border:1px solid rgba(212,168,67,0.12); }
-  .value-card { background:rgba(13,35,64,0.8); padding:2.5rem; transition:background 0.3s; }
-  .value-card:hover { background:rgba(26,61,107,0.6); }
-  .value-glyph { width:40px; height:40px; margin-bottom:1.5rem; }
-  .value-title { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:400; color:var(--gold-soft); margin-bottom:0.75rem; letter-spacing:0.03em; }
-  .value-desc { font-size:0.88rem; font-weight:300; color:rgba(248,243,232,0.6); line-height:1.85; }
-
-  /* STORIES */
-  #stories { background:var(--cream); padding:8rem 0; }
-  .stories-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:4rem; }
-  .stories-heading { font-size:clamp(2.2rem,3.5vw,3.2rem); color:var(--text-dark); }
-  .stories-heading em { font-style:italic; color:var(--sage); display:block; }
-  .view-all { font-size:0.75rem; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold-bright); text-decoration:none; border-bottom:1px solid rgba(212,168,67,0.3); padding-bottom:2px; transition:border-color 0.3s; white-space:nowrap; margin-bottom:0.5rem; flex-shrink:0; }
-  .view-all:hover { border-color:var(--gold-bright); }
-  .stories-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:2px; background:rgba(90,70,30,0.1); }
-  .story-card { background:white; cursor:pointer; overflow:hidden; transition:transform 0.3s; position:relative; }
-  .story-card:hover { transform:translateY(-4px); z-index:2; }
-  .story-img-placeholder { width:100%; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.4); font-family:'Jost',sans-serif; }
-  .story-body { padding:1.5rem 1.5rem 2rem; }
-  .story-tag { font-size:0.65rem; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:0.6rem; }
-  .story-title { font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:400; color:var(--text-dark); line-height:1.35; margin-bottom:0.75rem; }
-  .story-excerpt { font-size:0.83rem; font-weight:300; color:var(--text-muted); line-height:1.8; }
-  .story-card.featured .story-title { font-size:1.6rem; }
-
-  /* HISTORY */
-  #history { background:#f0ebe0; padding:8rem 0; }
-  .history-layout { display:grid; grid-template-columns:1fr 1.2fr; gap:6rem; align-items:start; }
-  .history-text .section-heading { font-size:clamp(2rem,3vw,2.8rem); color:var(--text-dark); margin-bottom:2rem; }
-  .history-text .section-heading em { font-style:italic; color:var(--earth-mid); display:block; }
-  .history-text p { font-size:0.95rem; font-weight:300; line-height:1.95; color:var(--text-mid); margin-bottom:1.2rem; }
-  .timeline { position:relative; padding-left:2rem; }
-  .timeline::before { content:''; position:absolute; top:8px;left:0;bottom:0; width:1px; background:linear-gradient(to bottom,var(--gold-bright),rgba(212,168,67,0.1)); }
-  .timeline-item { position:relative; padding-bottom:2.5rem; }
-  .timeline-item::before { content:''; position:absolute; left:-2rem; top:8px; width:8px;height:8px; border-radius:50%; background:var(--gold-bright); transform:translateX(-3.5px); }
-  .timeline-year { font-size:0.7rem; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:0.4rem; }
-  .timeline-event { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:400; color:var(--text-dark); margin-bottom:0.4rem; }
-  .timeline-desc { font-size:0.85rem; font-weight:300; color:var(--text-muted); line-height:1.75; }
-
-  /* EVENTS */
-  #events { background:var(--sky-deep); padding:7rem 0; }
-  #events::before { content:''; position:absolute; top:0;left:0;right:0; height:4px; background:linear-gradient(to right,transparent,var(--gold-bright),transparent); }
-  #events .section-label { color:rgba(212,168,67,0.7); }
-  #events .section-label::before { background:rgba(212,168,67,0.7); }
-  .events-heading { font-size:clamp(2rem,3vw,2.8rem); color:var(--cream); margin-bottom:3.5rem; }
-  .events-list { display:flex; flex-direction:column; gap:1px; background:rgba(212,168,67,0.1); border:1px solid rgba(212,168,67,0.1); }
-  .event-row { display:grid; grid-template-columns:80px 1fr auto; align-items:center; gap:2.5rem; padding:1.8rem 2rem; background:rgba(13,35,64,0.7); transition:background 0.3s; cursor:pointer; }
-  .event-row:hover { background:rgba(26,61,107,0.5); }
-  .event-date { text-align:center; }
-  .event-day { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:300; color:var(--gold-soft); line-height:1; }
-  .event-month { font-size:0.65rem; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:rgba(212,168,67,0.5); }
-  .event-tag { font-size:0.65rem; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--sage-light); margin-bottom:0.3rem; }
-  .event-name { font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:400; color:var(--cream); margin-bottom:0.25rem; }
-  .event-location { font-size:0.82rem; font-weight:300; color:rgba(248,243,232,0.4); }
-  .event-arrow { color:rgba(212,168,67,0.4); font-size:1.1rem; transition:color 0.3s,transform 0.3s; }
-  .event-row:hover .event-arrow { color:var(--gold-soft); transform:translateX(4px); }
-
-  /* SUPPORT */
-  #support { background:var(--cream); padding:8rem 0; }
-  .support-layout { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
-  .support-text .section-heading { font-size:clamp(2.2rem,3.5vw,3.2rem); color:var(--text-dark); margin-bottom:1.5rem; }
-  .support-text .section-heading em { font-style:italic; color:var(--sky-mid); }
-  .support-text p { font-size:0.95rem; font-weight:300; line-height:1.95; color:var(--text-mid); margin-bottom:1.2rem; }
-  .support-form-panel { background:var(--sky-deep); padding:3rem; border-radius:4px; position:relative; overflow:hidden; }
-  .support-form-panel::before { content:''; position:absolute; top:0;left:0;right:0; height:3px; background:linear-gradient(to right,var(--gold-bright),var(--sage-light)); }
-  .form-heading { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:300; color:var(--cream); margin-bottom:0.5rem; }
-  .form-sub { font-size:0.82rem; color:rgba(248,243,232,0.4); margin-bottom:2rem; font-weight:300; }
-  .amount-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:1.5rem; }
-  .amount-btn { padding:0.7rem; text-align:center; font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:400; color:rgba(248,243,232,0.7); background:rgba(255,255,255,0.06); border:1px solid rgba(212,168,67,0.2); border-radius:2px; cursor:pointer; transition:all 0.2s; }
-  .amount-btn:hover, .amount-btn.active { background:rgba(212,168,67,0.15); border-color:var(--gold-bright); color:var(--gold-soft); }
-  .form-input { width:100%; padding:0.85rem 1rem; background:rgba(255,255,255,0.06); border:1px solid rgba(212,168,67,0.2); border-radius:2px; color:var(--cream); font-family:'Jost',sans-serif; font-size:0.9rem; font-weight:300; margin-bottom:1rem; outline:none; transition:border-color 0.2s; }
-  .form-input::placeholder { color:rgba(248,243,232,0.3); }
-  .form-input:focus { border-color:var(--gold-bright); }
-  .donate-submit { width:100%; padding:1rem; background:var(--gold-bright); color:var(--earth-dark); font-family:'Jost',sans-serif; font-size:0.8rem; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; border:none; border-radius:2px; cursor:pointer; transition:background 0.3s; }
-  .donate-submit:hover { background:var(--gold-soft); }
-
-  /* FOOTER */
-  footer { background:#050d1a; padding:5rem 0 3rem; border-top:1px solid rgba(212,168,67,0.1); }
-  .footer-inner { max-width:1100px; margin:0 auto; padding:0 3rem; }
-  .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:4rem; margin-bottom:4rem; }
-  .footer-brand-name { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:400; color:var(--gold-soft); letter-spacing:0.06em; margin-bottom:0.3rem; }
-  .footer-brand-sub { font-style:italic; font-family:'Cormorant Garamond',serif; font-size:0.85rem; color:rgba(212,168,67,0.4); margin-bottom:1.2rem; }
-  .footer-about { font-size:0.82rem; font-weight:300; color:rgba(248,243,232,0.4); line-height:1.8; max-width:280px; }
-  .footer-col-title { font-size:0.65rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:rgba(212,168,67,0.5); margin-bottom:1.2rem; }
-  .footer-links { list-style:none; display:flex; flex-direction:column; gap:0.65rem; }
-  .footer-links a { font-size:0.85rem; font-weight:300; color:rgba(248,243,232,0.4); text-decoration:none; transition:color 0.2s; }
-  .footer-links a:hover { color:var(--gold-soft); }
-  .footer-bottom { padding-top:2rem; border-top:1px solid rgba(212,168,67,0.08); display:flex; justify-content:space-between; align-items:center; }
-  .footer-legal { font-size:0.75rem; color:rgba(248,243,232,0.25); font-weight:300; }
-  .footer-lakota { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.85rem; color:rgba(212,168,67,0.3); }
-
-  /* REVEAL */
-  .reveal { opacity:0; transform:translateY(24px); transition:opacity 0.8s ease,transform 0.8s ease; }
-  .reveal.visible { opacity:1; transform:none; }
-
-  /* RESPONSIVE */
-  @media (max-width:900px) {
-    nav { padding:1rem 1.5rem; }
-    .nav-links { display:none; }
-    .section-inner { padding:0 1.5rem; }
-    .mission-layout,.history-layout,.support-layout { grid-template-columns:1fr; gap:3rem; }
-    .values-grid { grid-template-columns:1fr; }
-    .stories-grid { grid-template-columns:1fr; }
-    .footer-grid { grid-template-columns:1fr 1fr; gap:2rem; }
-    .event-row { grid-template-columns:60px 1fr; }
-    .event-arrow { display:none; }
-  }
-</style>
+<meta name="description" content="A grassroots spiritual organization on the Pine Ridge Indian Reservation, uniting the Oyate in prayer, ceremony, and fellowship.">
+<link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 
-<nav>
+<nav id="nav">
   <div class="nav-wordmark">
-    Zintkala Wakan Hoyapi
-    <span>Voice of The Sacred Bird</span>
+    <img class="nav-mark" src="assets/logo.jpg" alt="Zintkala Wakan Hoyapi emblem">
+
+    <div class="nav-wordmark-text">Zintkala Wakan Hoyapi<span>Voice of The Sacred Bird</span></div>
   </div>
   <ul class="nav-links">
     <li><a href="#mission">Our Mission</a></li>
@@ -223,35 +31,29 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="stars" id="stars-container"></div>
+  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-scrim"></div>
 
-  <div class="bird-symbol">
-    <div class="symbol-ring"></div>
-    <div class="symbol-ring symbol-ring-2"></div>
-    <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <polygon points="50,12 62,38 88,38 68,55 76,82 50,65 24,82 32,55 12,38 38,38" fill="none" stroke="rgba(212,168,67,0.45)" stroke-width="1"/>
-      <path d="M18,44 L50,50 L82,44" stroke="rgba(212,168,67,0.85)" stroke-width="1.5" fill="none"/>
-      <path d="M50,26 L50,74" stroke="rgba(212,168,67,0.55)" stroke-width="1" fill="none"/>
-      <circle cx="50" cy="22" r="4.5" fill="rgba(212,168,67,0.75)"/>
-      <path d="M40,72 L50,82 L60,72" stroke="rgba(212,168,67,0.5)" stroke-width="1" fill="none"/>
-      <path d="M20,50 L34,54" stroke="rgba(212,168,67,0.35)" stroke-width="0.8" fill="none"/>
-      <path d="M80,50 L66,54" stroke="rgba(212,168,67,0.35)" stroke-width="0.8" fill="none"/>
-      <polygon points="50,44 54,50 50,56 46,50" fill="rgba(212,168,67,0.65)"/>
-    </svg>
+  <div class="hero-content">
+    <div class="hero-bird">
+      <div class="hero-logo-ring"></div>
+      <img class="hero-logo" src="assets/logo.jpg" alt="Zintkala Wakan Hoyapi emblem — a sacred buffalo drum">
+    </div>
+
+    <div class="hero-eyebrow">Pine Ridge Indian Reservation · South Dakota</div>
+
+    <h1 class="hero-title">
+      <span class="line"><span>Zintkala Wakan</span></span>
+      <span class="line"><span>Hoyapi</span></span>
+    </h1>
+    <p class="hero-sub">Voice of The Sacred Bird</p>
+    <p class="hero-intro">A grassroots spiritual organization united in prayer, ceremony, and fellowship — empowering and healing the Oyate through the ancient wisdom of our ancestors.</p>
+    <div class="hero-cta-group">
+      <a href="#mission" class="btn-primary">Learn Our Story</a>
+      <a href="#support" class="btn-outline">Support Our Work</a>
+    </div>
   </div>
 
-  <div class="hero-divider"></div>
-  <h1 class="hero-title">
-    Zintkala Wakan Hoyapi
-    <em>Voice of The Sacred Bird</em>
-  </h1>
-  <p class="hero-subtitle">Pine Ridge Indian Reservation &middot; South Dakota</p>
-  <div class="hero-divider"></div>
-  <p class="hero-intro">A grassroots spiritual organization united in prayer, ceremony, and fellowship — empowering and healing the Oyate through the ancient wisdom of our ancestors.</p>
-  <div class="hero-cta-group">
-    <a href="#mission" class="btn-primary">Learn Our Story</a>
-    <a href="#support" class="btn-outline">Support Our Work</a>
-  </div>
   <div class="scroll-hint">
     <span>Scroll</span>
     <div class="scroll-line"></div>
@@ -260,7 +62,8 @@
 
 <!-- MISSION -->
 <section id="mission">
-  <div class="section-inner" style="padding-top:8rem;padding-bottom:8rem;">
+  <div class="ghost-num">01</div>
+  <div class="section-inner">
     <div class="mission-layout">
       <div class="mission-text reveal">
         <div class="section-label">Our Purpose</div>
@@ -268,146 +71,89 @@
         <p>We are Zintkala Wakan Hoyapi — a prayer team and collective of community members based on the Pine Ridge Indian Reservation. Our mission is simple, but profound: to empower our Oyate through ceremonies, spiritual fellowship, and innovation.</p>
         <p>The Pine Ridge Reservation, like many Indigenous communities across the United States, carries the weight of centuries of trauma — from the loss of our homelands to the devastating impacts of the residential school system. The wounds of the Wounded Knee Massacre of 1890 ripple through our community still, shaping every part of how we live.</p>
         <p>Our ancestors taught us that when the world feels broken, it is in the coming together of the people — through prayer, ceremony, and collective action — that healing begins. We answer that sacred call every day.</p>
-        <a href="#support" class="btn-primary" style="margin-top:1.5rem;">Walk This Path With Us</a>
+        <a href="#support" class="btn-primary" style="margin-top:1.6rem;">Walk This Path With Us</a>
       </div>
 
-      <div class="reveal">
-        <svg width="100%" viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:4px;">
-          <defs>
-            <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#050d1a"/>
-              <stop offset="55%" stop-color="#0d2340"/>
-              <stop offset="100%" stop-color="#1a3d6b"/>
-            </linearGradient>
-            <linearGradient id="landG" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#2a1f0f"/>
-              <stop offset="100%" stop-color="#1a1208"/>
-            </linearGradient>
-            <radialGradient id="moonG" cx="75%" cy="22%" r="35%">
-              <stop offset="0%" stop-color="rgba(212,168,67,0.13)"/>
-              <stop offset="100%" stop-color="rgba(212,168,67,0)"/>
-            </radialGradient>
-          </defs>
-          <rect width="480" height="360" fill="url(#skyG)"/>
-          <rect width="480" height="360" fill="url(#moonG)"/>
-          <!-- Stars -->
-          <circle cx="50" cy="35" r="1" fill="white" opacity="0.65"/>
-          <circle cx="110" cy="22" r="0.8" fill="white" opacity="0.5"/>
-          <circle cx="190" cy="50" r="1.1" fill="white" opacity="0.75"/>
-          <circle cx="270" cy="28" r="0.7" fill="white" opacity="0.55"/>
-          <circle cx="360" cy="45" r="1" fill="white" opacity="0.7"/>
-          <circle cx="420" cy="18" r="0.6" fill="white" opacity="0.45"/>
-          <circle cx="140" cy="65" r="0.6" fill="white" opacity="0.5"/>
-          <circle cx="320" cy="72" r="0.8" fill="white" opacity="0.6"/>
-          <circle cx="80" cy="85" r="0.7" fill="white" opacity="0.4"/>
-          <circle cx="440" cy="65" r="0.6" fill="white" opacity="0.5"/>
-          <circle cx="30" cy="78" r="0.5" fill="white" opacity="0.35"/>
-          <circle cx="460" cy="42" r="0.7" fill="white" opacity="0.55"/>
-          <!-- Moon -->
-          <circle cx="362" cy="70" r="24" fill="rgba(240,225,185,0.1)"/>
-          <circle cx="362" cy="70" r="18" fill="rgba(240,225,185,0.18)"/>
-          <circle cx="362" cy="70" r="13" fill="rgba(240,225,185,0.3)"/>
-          <!-- Distant ridge -->
-          <path d="M0,198 Q50,155 110,172 Q170,188 230,158 Q290,132 355,162 Q415,182 480,168 L480,360 L0,360 Z" fill="#0d1e0a" opacity="0.55"/>
-          <!-- Prairie -->
-          <path d="M0,238 Q80,222 160,232 Q240,242 320,228 Q400,216 480,224 L480,360 L0,360 Z" fill="url(#landG)"/>
-          <!-- Grasses -->
-          <g stroke="rgba(90,70,30,0.38)" stroke-width="0.8">
-            <line x1="28" y1="248" x2="26" y2="237"/><line x1="34" y1="246" x2="37" y2="234"/>
-            <line x1="78" y1="242" x2="76" y2="231"/><line x1="84" y1="240" x2="87" y2="228"/>
-            <line x1="138" y1="246" x2="136" y2="234"/><line x1="144" y1="244" x2="147" y2="232"/>
-            <line x1="208" y1="246" x2="206" y2="234"/><line x1="214" y1="244" x2="217" y2="232"/>
-            <line x1="288" y1="242" x2="286" y2="230"/><line x1="294" y1="240" x2="297" y2="228"/>
-            <line x1="368" y1="238" x2="366" y2="226"/><line x1="374" y1="236" x2="377" y2="224"/>
-            <line x1="438" y1="241" x2="436" y2="229"/><line x1="444" y1="239" x2="447" y2="227"/>
-          </g>
-          <!-- Tipis -->
-          <path d="M188,238 L208,183 L228,238 Z" fill="rgba(22,28,8,0.82)"/>
-          <path d="M212,238 L230,188 L248,238 Z" fill="rgba(16,22,6,0.9)"/>
-          <path d="M242,238 L258,193 L274,238 Z" fill="rgba(22,28,8,0.78)"/>
-          <line x1="208" y1="183" x2="202" y2="176" stroke="rgba(22,28,8,0.7)" stroke-width="1.5"/>
-          <line x1="208" y1="183" x2="214" y2="176" stroke="rgba(22,28,8,0.7)" stroke-width="1.5"/>
-          <line x1="230" y1="188" x2="224" y2="181" stroke="rgba(16,22,6,0.8)" stroke-width="1.5"/>
-          <line x1="230" y1="188" x2="236" y2="181" stroke="rgba(16,22,6,0.8)" stroke-width="1.5"/>
-          <!-- Fire glow -->
-          <ellipse cx="226" cy="243" rx="14" ry="4.5" fill="rgba(200,90,15,0.22)"/>
-          <ellipse cx="226" cy="241" rx="7" ry="2.5" fill="rgba(200,110,25,0.32)"/>
-          <!-- Eagle silhouette -->
-          <path d="M155,118 Q165,113 175,118 Q181,115 187,118 Q182,123 175,120 Q168,123 155,118 Z" fill="rgba(212,168,67,0.32)"/>
-          <path d="M170,118 L175,128 L180,118" fill="rgba(212,168,67,0.22)"/>
-          <!-- Horizon warmth -->
-          <ellipse cx="240" cy="224" rx="110" ry="13" fill="rgba(212,168,67,0.05)"/>
-          <!-- Border -->
-          <rect x="1" y="1" width="478" height="358" stroke="rgba(212,168,67,0.14)" stroke-width="1.5" fill="none" rx="3"/>
-          <text x="240" y="320" text-anchor="middle" fill="rgba(212,168,67,0.25)" font-family="'Jost',sans-serif" font-size="9" letter-spacing="2">PHOTO GALLERY COMING SOON</text>
-        </svg>
-      </div>
+      <figure class="mission-figure reveal">
+        <img class="mission-photo" src="assets/community-raising.jpg" alt="Community members at Pine Ridge raising the tipi poles together">
+        <figcaption class="figure-caption">Pine Ridge · Raising the Lodge Together — Many Hands, One Heart</figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
 <!-- VALUES -->
 <section id="values">
-  <div class="section-inner" style="padding-top:7rem;padding-bottom:7rem;">
-    <div class="reveal">
-      <div class="section-label">What We Stand On</div>
-      <h2 class="section-heading values-heading">Rooted in the<br>ways of the ancestors</h2>
+  <div class="section-inner">
+    <div class="values-head reveal">
+      <div>
+        <div class="section-label">What We Stand On</div>
+        <h2 class="section-heading">Rooted in the ways of<br><em>the ancestors</em></h2>
+      </div>
+      <p>Six teachings carried across generations — the foundation of every prayer, ceremony, and act of fellowship we offer the Oyate.</p>
     </div>
-    <div class="values-grid reveal">
-      <div class="value-card">
-        <svg class="value-glyph" viewBox="0 0 40 40" fill="none">
-          <circle cx="20" cy="20" r="18" stroke="rgba(212,168,67,0.28)" stroke-width="0.8"/>
-          <path d="M20,8 L20,32 M14,14 L20,8 L26,14" stroke="rgba(212,168,67,0.8)" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M12,22 Q16,28 20,30 Q24,28 28,22" stroke="rgba(212,168,67,0.5)" stroke-width="1" fill="none"/>
-        </svg>
-        <div class="value-title">Wocekiye — Prayer</div>
+
+    <div class="reveal">
+      <div class="value-row">
+        <div class="value-index">01</div>
+        <div class="value-term">Wocekiye<span>Prayer</span></div>
         <p class="value-desc">Sacred ceremony and prayer form the heartbeat of our work. Through the ancient spiritual traditions of our people, we seek guidance, healing, and strength for the Oyate.</p>
-      </div>
-      <div class="value-card">
         <svg class="value-glyph" viewBox="0 0 40 40" fill="none">
-          <circle cx="20" cy="20" r="18" stroke="rgba(212,168,67,0.28)" stroke-width="0.8"/>
-          <circle cx="20" cy="14" r="3.5" stroke="rgba(212,168,67,0.8)" stroke-width="1.2"/>
-          <path d="M12,26 Q14,20 20,20 Q26,20 28,26" stroke="rgba(212,168,67,0.6)" stroke-width="1.2" fill="none"/>
-          <circle cx="12" cy="22" r="2.5" stroke="rgba(212,168,67,0.5)" stroke-width="1"/>
-          <circle cx="28" cy="22" r="2.5" stroke="rgba(212,168,67,0.5)" stroke-width="1"/>
+          <circle cx="20" cy="20" r="18" stroke="rgba(216,167,62,0.3)" stroke-width="0.8"/>
+          <path d="M20,8 L20,32 M14,14 L20,8 L26,14" stroke="var(--gold-soft)" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M12,22 Q16,28 20,30 Q24,28 28,22" stroke="rgba(236,208,137,0.55)" stroke-width="1" fill="none"/>
         </svg>
-        <div class="value-title">Mitákuye Oyásʼiŋ</div>
-        <p class="value-desc">"All my relations." We are connected to all living beings. Our healing is collective — no person walks alone on this path. When we rise, we rise together as one people.</p>
       </div>
-      <div class="value-card">
+      <div class="value-row">
+        <div class="value-index">02</div>
+        <div class="value-term">Mitákuye Oyásʼiŋ<span>All My Relations</span></div>
+        <p class="value-desc">We are connected to all living beings. Our healing is collective — no person walks alone on this path. When we rise, we rise together as one people.</p>
         <svg class="value-glyph" viewBox="0 0 40 40" fill="none">
-          <circle cx="20" cy="20" r="18" stroke="rgba(212,168,67,0.28)" stroke-width="0.8"/>
-          <circle cx="20" cy="20" r="8" stroke="rgba(212,168,67,0.7)" stroke-width="1"/>
-          <line x1="20" y1="4" x2="20" y2="36" stroke="rgba(212,168,67,0.45)" stroke-width="0.8"/>
-          <line x1="4" y1="20" x2="36" y2="20" stroke="rgba(212,168,67,0.45)" stroke-width="0.8"/>
-          <circle cx="20" cy="20" r="2" fill="rgba(212,168,67,0.8)"/>
+          <circle cx="20" cy="20" r="18" stroke="rgba(216,167,62,0.3)" stroke-width="0.8"/>
+          <circle cx="20" cy="14" r="3.5" stroke="var(--gold-soft)" stroke-width="1.2"/>
+          <path d="M12,26 Q14,20 20,20 Q26,20 28,26" stroke="rgba(236,208,137,0.65)" stroke-width="1.2" fill="none"/>
+          <circle cx="12" cy="22" r="2.5" stroke="rgba(236,208,137,0.5)" stroke-width="1"/>
+          <circle cx="28" cy="22" r="2.5" stroke="rgba(236,208,137,0.5)" stroke-width="1"/>
         </svg>
-        <div class="value-title">Wounspe — Wisdom</div>
+      </div>
+      <div class="value-row">
+        <div class="value-index">03</div>
+        <div class="value-term">Wounspe<span>Wisdom</span></div>
         <p class="value-desc">The teachings of our elders carry us forward. We honor the knowledge passed through generations, preserving our language, stories, and ceremonies for the children yet to come.</p>
-      </div>
-      <div class="value-card">
         <svg class="value-glyph" viewBox="0 0 40 40" fill="none">
-          <circle cx="20" cy="20" r="18" stroke="rgba(212,168,67,0.28)" stroke-width="0.8"/>
-          <path d="M20,32 Q14,26 16,20 Q17,16 20,14 Q21,18 19,21 Q22,17 24,12 Q28,18 26,24 Q24,28 20,32 Z" stroke="rgba(212,168,67,0.7)" stroke-width="1" fill="rgba(212,168,67,0.12)"/>
+          <circle cx="20" cy="20" r="18" stroke="rgba(216,167,62,0.3)" stroke-width="0.8"/>
+          <circle cx="20" cy="20" r="8" stroke="rgba(236,208,137,0.7)" stroke-width="1"/>
+          <line x1="20" y1="4" x2="20" y2="36" stroke="rgba(236,208,137,0.45)" stroke-width="0.8"/>
+          <line x1="4" y1="20" x2="36" y2="20" stroke="rgba(236,208,137,0.45)" stroke-width="0.8"/>
+          <circle cx="20" cy="20" r="2" fill="var(--gold-soft)"/>
         </svg>
-        <div class="value-title">Waníčhiŋ — Healing</div>
+      </div>
+      <div class="value-row">
+        <div class="value-index">04</div>
+        <div class="value-term">Waníčhiŋ<span>Healing</span></div>
         <p class="value-desc">Historical wounds are real, and so is the path to healing. We create spaces of safety and restoration — for survivors, for youth, for families carrying generational trauma.</p>
-      </div>
-      <div class="value-card">
         <svg class="value-glyph" viewBox="0 0 40 40" fill="none">
-          <circle cx="20" cy="20" r="18" stroke="rgba(212,168,67,0.28)" stroke-width="0.8"/>
-          <path d="M6,20 Q10,16 16,18 Q20,20 24,16 Q28,12 34,16 Q36,20 34,24 Q28,28 24,24 Q20,20 14,24 Q10,26 6,24 Z" stroke="rgba(212,168,67,0.6)" stroke-width="1" fill="rgba(212,168,67,0.08)"/>
+          <circle cx="20" cy="20" r="18" stroke="rgba(216,167,62,0.3)" stroke-width="0.8"/>
+          <path d="M20,32 Q14,26 16,20 Q17,16 20,14 Q21,18 19,21 Q22,17 24,12 Q28,18 26,24 Q24,28 20,32 Z" stroke="rgba(236,208,137,0.7)" stroke-width="1" fill="rgba(216,167,62,0.12)"/>
         </svg>
-        <div class="value-title">Makȟóčhe — The Land</div>
+      </div>
+      <div class="value-row">
+        <div class="value-index">05</div>
+        <div class="value-term">Makȟóčhe<span>The Land</span></div>
         <p class="value-desc">We are of this land. The Black Hills, the Plains, the rivers — our identity is inseparable from the earth beneath our feet. We protect and honor our sacred homelands.</p>
-      </div>
-      <div class="value-card">
         <svg class="value-glyph" viewBox="0 0 40 40" fill="none">
-          <circle cx="20" cy="20" r="18" stroke="rgba(212,168,67,0.28)" stroke-width="0.8"/>
-          <polygon points="20,8 22.5,16.5 31,16.5 24,22 26.5,30.5 20,25 13.5,30.5 16,22 9,16.5 17.5,16.5" stroke="rgba(212,168,67,0.7)" stroke-width="1" fill="rgba(212,168,67,0.08)"/>
+          <circle cx="20" cy="20" r="18" stroke="rgba(216,167,62,0.3)" stroke-width="0.8"/>
+          <path d="M6,20 Q10,16 16,18 Q20,20 24,16 Q28,12 34,16 Q36,20 34,24 Q28,28 24,24 Q20,20 14,24 Q10,26 6,24 Z" stroke="rgba(236,208,137,0.6)" stroke-width="1" fill="rgba(216,167,62,0.08)"/>
         </svg>
-        <div class="value-title">Tokéčha — Innovation</div>
+      </div>
+      <div class="value-row">
+        <div class="value-index">06</div>
+        <div class="value-term">Tokéčha<span>Innovation</span></div>
         <p class="value-desc">We honor the old ways and embrace new tools of healing and connection. Innovation in service of culture — reaching our youth where they are, building bridges to a healed future.</p>
+        <svg class="value-glyph" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="18" stroke="rgba(216,167,62,0.3)" stroke-width="0.8"/>
+          <polygon points="20,8 22.5,16.5 31,16.5 24,22 26.5,30.5 20,25 13.5,30.5 16,22 9,16.5 17.5,16.5" stroke="rgba(236,208,137,0.7)" stroke-width="1" fill="rgba(216,167,62,0.08)"/>
+        </svg>
       </div>
     </div>
   </div>
@@ -415,38 +161,38 @@
 
 <!-- STORIES -->
 <section id="stories">
-  <div class="section-inner" style="padding-top:8rem;padding-bottom:8rem;">
+  <div class="section-inner">
     <div class="stories-header reveal">
       <div>
         <div class="section-label">Oral Traditions &amp; Memory</div>
-        <h2 class="section-heading stories-heading">Stories of the<br><em>Oyate</em></h2>
+        <h2 class="section-heading stories-heading">Stories of the<em>Oyate</em></h2>
       </div>
-      <a href="#" class="view-all">All Stories &rarr;</a>
+      <a href="stories.html" class="view-all">All Stories <span>&rarr;</span></a>
     </div>
     <div class="stories-grid reveal">
-      <div class="story-card featured">
-        <div class="story-img-placeholder" style="background:linear-gradient(135deg,#0d2340 0%,#1a3d6b 60%,#2a4a20 100%);">Photo Coming Soon</div>
-        <div class="story-body">
-          <div class="story-tag">Oral Tradition</div>
+      <a class="story-card featured" href="stories/thunder-beings.html">
+        <div class="story-media" style="background:linear-gradient(150deg,#06080f 0%,#1a274d 55%,#2a4a20 100%);"></div>
+        <div class="story-overlay">
+          <span class="story-tag">Oral Tradition</span>
           <h3 class="story-title">When the Thunder Beings Spoke: Remembering the Vision Seekers of Pine Ridge</h3>
           <p class="story-excerpt">Passed through generations, this account of the Wakinyan — the sacred Thunderbirds — carries the spiritual teachings that have guided our people through times of great change and renewal.</p>
         </div>
-      </div>
-      <div class="story-card">
-        <div class="story-img-placeholder" style="background:linear-gradient(135deg,#2a1f0f 0%,#5c3d1e 100%);">Photo Coming Soon</div>
-        <div class="story-body">
-          <div class="story-tag">History</div>
-          <h3 class="story-title">The Long Walk Home: Paths Back to Pine Ridge</h3>
-          <p class="story-excerpt">A collection of voices from those who left the reservation and found their way back — drawn by ceremony, family, and the call of the land.</p>
-        </div>
-      </div>
-      <div class="story-card">
-        <div class="story-img-placeholder" style="background:linear-gradient(135deg,#1a2f10 0%,#3d5e1e 100%);">Photo Coming Soon</div>
-        <div class="story-body">
-          <div class="story-tag">Youth</div>
-          <h3 class="story-title">Young Voices Rising: A New Generation Learns the Lakota Way</h3>
-          <p class="story-excerpt">Our youth are learning the dances, the songs, and the language of their grandparents. Their stories remind us why this work matters so deeply.</p>
-        </div>
+      </a>
+      <div class="stories-col">
+        <a class="story-card small" href="stories/long-walk-home.html">
+          <div class="story-media" style="background:linear-gradient(150deg,#2a1f0f 0%,#5c3d1e 100%);"></div>
+          <div class="story-overlay">
+            <span class="story-tag">History</span>
+            <h3 class="story-title">The Long Walk Home: Paths Back to Pine Ridge</h3>
+          </div>
+        </a>
+        <a class="story-card small" href="stories/young-voices.html">
+          <div class="story-media" style="background:linear-gradient(150deg,#162810 0%,#3d5e1e 100%);"></div>
+          <div class="story-overlay">
+            <span class="story-tag">Youth</span>
+            <h3 class="story-title">Young Voices Rising: A New Generation Learns the Lakota Way</h3>
+          </div>
+        </a>
       </div>
     </div>
   </div>
@@ -454,7 +200,7 @@
 
 <!-- HISTORY -->
 <section id="history">
-  <div class="section-inner" style="padding-top:8rem;padding-bottom:8rem;">
+  <div class="section-inner">
     <div class="history-layout">
       <div class="history-text reveal">
         <div class="section-label">Roots &amp; Remembrance</div>
@@ -496,10 +242,10 @@
 
 <!-- EVENTS -->
 <section id="events">
-  <div class="section-inner" style="padding-top:7rem;padding-bottom:7rem;">
+  <div class="section-inner">
     <div class="reveal">
       <div class="section-label">Come Gather With Us</div>
-      <h2 class="section-heading events-heading">Ceremony, fellowship<br>&amp; community</h2>
+      <h2 class="section-heading events-heading">Ceremony, fellowship<br>&amp; <em>community</em></h2>
     </div>
     <div class="events-list reveal">
       <div class="event-row">
@@ -530,7 +276,7 @@
         <div class="event-arrow">&rarr;</div>
       </div>
       <div class="event-row">
-        <div class="event-date"><div class="event-day" style="font-size:1.3rem">TBD</div><div class="event-month">2026</div></div>
+        <div class="event-date"><div class="event-day" style="font-size:1.5rem">TBD</div><div class="event-month">2026</div></div>
         <div class="event-info">
           <div class="event-tag">Ceremony</div>
           <div class="event-name">Annual Healing Circle &amp; Feast</div>
@@ -544,16 +290,16 @@
 
 <!-- SUPPORT -->
 <section id="support">
-  <div class="section-inner" style="padding-top:8rem;padding-bottom:8rem;">
+  <div class="section-inner">
     <div class="support-layout">
       <div class="support-text reveal">
         <div class="section-label">Walk The Sacred Path</div>
         <h2 class="section-heading">Your support lifts<br><em>the Oyate</em></h2>
         <p>We are living through a time of great transition. Nationwide budget cuts have strained our already under-resourced community, leading to job losses and the shutdown of critical support systems. Many of our staff and volunteers are struggling to meet their own basic needs.</p>
         <p>And yet we remain steadfast. Your support helps us carry out vital ceremonies, maintain our prayer team, provide spiritual guidance, and create new opportunities for growth and healing across the Pine Ridge community.</p>
-        <p>We believe in the power of collective prayer and action. When we come together with one heart and one mind, we overcome even the greatest obstacles. <strong style="font-weight:500;color:var(--text-dark)">Now is that time.</strong></p>
-        <div style="margin-top:2rem;padding:1.5rem 2rem;border-left:3px solid var(--gold-bright);background:rgba(212,168,67,0.05);">
-          <p style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--text-dark);font-weight:400;line-height:1.6;margin:0;">"Together, we can walk this sacred path and help the Oyate rise again."</p>
+        <p>We believe in the power of collective prayer and action. When we come together with one heart and one mind, we overcome even the greatest obstacles. <strong style="font-weight:600;color:var(--ink)">Now is that time.</strong></p>
+        <div class="support-quote">
+          <p>"Together, we can walk this sacred path and help the Oyate rise again."</p>
         </div>
       </div>
       <div class="support-form-panel reveal">
@@ -570,7 +316,7 @@
         <input class="form-input" type="text" placeholder="Your name"/>
         <input class="form-input" type="email" placeholder="Email address"/>
         <button class="donate-submit" onclick="handleDonate()">Support the Oyate &rarr;</button>
-        <p style="font-size:0.72rem;color:rgba(248,243,232,0.28);text-align:center;margin-top:1rem;line-height:1.6;">Zintkala Wakan Hoyapi &middot; Pine Ridge Indian Reservation, South Dakota<br>Grassroots spiritual organization &mdash; all donations directly support community programs</p>
+        <p class="form-fine">Zintkala Wakan Hoyapi · Pine Ridge Indian Reservation, South Dakota<br>Grassroots spiritual organization — all donations directly support community programs</p>
       </div>
     </div>
   </div>
@@ -581,6 +327,7 @@
   <div class="footer-inner">
     <div class="footer-grid">
       <div>
+        <img class="footer-logo" src="assets/logo.jpg" alt="Zintkala Wakan Hoyapi emblem">
         <div class="footer-brand-name">Zintkala Wakan Hoyapi</div>
         <div class="footer-brand-sub">Voice of The Sacred Bird</div>
         <p class="footer-about">A grassroots spiritual organization based on the Pine Ridge Indian Reservation, South Dakota. Empowering and healing the Oyate through sacred ceremonies, spiritual guidance, and fellowship.</p>
@@ -616,32 +363,33 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-legal">&copy; 2026 Zintkala Wakan Hoyapi &middot; Pine Ridge Indian Reservation, South Dakota</p>
+      <p class="footer-legal">&copy; 2026 Zintkala Wakan Hoyapi · Pine Ridge Indian Reservation, South Dakota</p>
       <p class="footer-lakota">Mitákuye Oyásʼiŋ</p>
     </div>
   </div>
 </footer>
 
-<script>
-  // Star field
-  const container = document.getElementById('stars-container');
-  for (let i = 0; i < 130; i++) {
-    const s = document.createElement('div');
-    s.classList.add('star');
-    const sz = Math.random() * 2.2 + 0.5;
-    s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*78}%;width:${sz}px;height:${sz}px;--d:${2+Math.random()*4}s;--delay:${-Math.random()*5}s;--min:${0.1+Math.random()*0.2};--max:${0.45+Math.random()*0.5};`;
-    container.appendChild(s);
-  }
+<!-- DOT NAV -->
+<nav class="dot-nav" id="dot-nav">
+  <a href="#home" data-label="Home" class="active"></a>
+  <a href="#mission" data-label="Mission"></a>
+  <a href="#values" data-label="Values"></a>
+  <a href="#stories" data-label="Stories"></a>
+  <a href="#history" data-label="History"></a>
+  <a href="#events" data-label="Gather"></a>
+  <a href="#support" data-label="Support"></a>
+</nav>
 
+<script>
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        setTimeout(() => e.target.classList.add('visible'), i * 70);
         observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   // Amount selection
@@ -655,14 +403,26 @@
     alert('Thank you for your support of Zintkala Wakan Hoyapi. This will connect to the payment system when live.\n\nMitákuye Oyásʼiŋ.');
   }
 
-  // Nav active state
+  // Parallax + nav state
+  const nav = document.getElementById('nav');
+  const heroBg = document.getElementById('hero-bg');
+  const dots = document.querySelectorAll('.dot-nav a');
+  const navLinks = document.querySelectorAll('.nav-links a');
   const secs = document.querySelectorAll('section[id]');
-  const links = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let cur = '';
-    secs.forEach(s => { if (window.scrollY >= s.offsetTop - 130) cur = s.id; });
-    links.forEach(a => { a.style.color = a.getAttribute('href') === '#'+cur ? 'rgba(232,201,122,0.95)' : 'rgba(248,243,232,0.7)'; });
-  });
+
+  function onScroll() {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 60);
+    if (y < window.innerHeight) {
+      heroBg.style.transform = `translateY(${y * 0.22}px) scale(1.04)`;
+    }
+    let cur = 'home';
+    secs.forEach(s => { if (y >= s.offsetTop - 200) cur = s.id; });
+    dots.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 </script>
 </body>
 </html>
